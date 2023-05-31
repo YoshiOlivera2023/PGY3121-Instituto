@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar datos</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>   
+</head>
+<body>
+    <h1>Editar Datos de Alumnos</h1>
+    <br>
+
+    <button>
+        <a href="{% url 'alumnosAdd' %}"> Agregar </a>
+    </button>
+
+    <div id="idMensajes">
+        {% if mensaje %}
+            {{mensaje}}
+        {% endif %}
+    </div>
+
+    <table>
+        {% if alumnos %}
+            <th> Rut </th>
+            <th> Nombre </th>
+            <th> Apellido P. </th>
+            <th> Eliminar </th>
+            <th> Modificar </th>
+
+            {% for x in alumnos %}
+                <tr> 
+                    <td> {{ x.rut }}
+                    <td> {{ x.nombre }}
+                    <td> {{ x.apellido_paterno }}
+                    <td> <a href="{% url 'alumnos_del' pk=x.rut %}"> Eliminar</a>
+                    <td> <a href="{% url 'alumnos_findEdit' pk=x.rut %}"> Modificar</a>
+                </tr>
+
+            {% endfor %}
+        {% endif %}
+    </table>
+
+
+
+</body>
+</html>
