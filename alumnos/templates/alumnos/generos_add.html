@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Géneros</title>
+</head>
+<body>
+    <h1>Formulario Géneros</h1><br><br>
+    
+
+    <form action = "" method = "POST">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <input type = "submit" value = "Agregar">
+    </form>
+
+    <br>
+    <div id="idMensajes">
+        {% if mensajes %}
+            {{mensajes}}
+        {% endif %}
+    </div>
+
+    <br>
+    <a href = "{% url 'crud_generos' %}"> Volver </a>
+    <br>
+</body>
+</html>
